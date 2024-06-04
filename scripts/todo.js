@@ -1,4 +1,6 @@
 "use strict"
-window.onload = ()=> {
+window.onload = () => {
     console.log("I work")
+
 }
+
