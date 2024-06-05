@@ -21,13 +21,15 @@ async function getUser() {
 
         data.forEach((users) => {
             usersTableBody.innerHTML += `
-            ${users.id}
-            ${users.name} 
-            ${users.username}
-            ${users.email}
-            ${users.phone}
-            ${users.website}
-           
+            <tr>
+
+                <td>${users.id}</td>
+                <td>${users.name}</td> 
+                <td>${users.username}</td>
+                <td>${users.email}</td>
+                <td>${users.phone}</td>
+                <td>${users.website}</td>
+           </tr>
            
             `;
 
