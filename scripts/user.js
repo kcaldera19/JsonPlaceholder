@@ -20,6 +20,7 @@ async function getUser() {
         usersTableBody.innerHTML = "";
 
         data.forEach((users) => {
+            // not best practice 
             usersTableBody.innerHTML += `
             <tr>
 
