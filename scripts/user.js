@@ -35,10 +35,6 @@ async function getUser() {
 
         });
 
-
-
-
-
     }
     catch (error) {
         console.error(error)
