@@ -12,30 +12,34 @@
         <a href="user.html">User Page</a>
         <a href="new_todo.html">Edit page</a>
     
-        
     </nav>
-    <form id="fetchToDoEdit">
-        <label for="toDoId">ToDo ID</label>
-        <input type="text" id="toDoId" name ="toDoId" required>
-        <button id="theButton">Lookup </button>
-    </form>
+    <div>
+        <form id="fetchToDoForm">
+            <label for="toDoId"> Update ToDo ID</label>
+            <input type="text" id="toDoId" name ="toDoId" value="" required>
+            <button id="theButton">Update </button>
+        </form>
+
+    </div>
+   
     <div>
         <h1>Add Comment Form</h1>
-        <form id="createTodoForm">
+        <form id="updatedTodoForm">
+            <input type="hidden" name="id" id="id" value="">
             <div>
                 <label for="userId">User ID:</label>
-                <input type="text" name="userId" value="">
+                <input type="text" name="userId" id="userId" value="">
             </div>
             <div>
                 <label for="title">Title:</label>
-                <input type="text" name="title" value="">
+                <input type="text" name="title" id="title" value="">
             </div>
             <div>
                 <label for="completed">Completed:</label>
-                <input type="text" name="completed" value="">
+                <input type="text" name="completed" id="completed" value="">
             </div>
            
-            <button>Create ToDo</button>
+            <button>Update ToDo</button>
         </form>
     </div>
 

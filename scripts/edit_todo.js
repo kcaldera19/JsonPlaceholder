@@ -1,72 +1,76 @@
 "use strict"
-window.onload=()=>{
+window.onload = () => {
     console.log("Carpe diem")
-    //get the getComment form off the page
-    const getCommentForm = document.querySelector("#getCommentToEdit");
 
-    //listen for submit of the getCommentForm and attempt to populate the update form
-    getCommentForm.addEventListener("submit", populateUpdateForm);
 
     //get the updateComment form off the page
-    const updateCommentForm = document.querySelector("#updateCommentForm");
+    const toForm = document.querySelector("#fetchToDoForm");
 
     //listen for submit of the getCommentForm and attempt to populate the update form
-    updateCommentForm.addEventListener("submit", updateAComment);
+    toForm.addEventListener("submit", getToDoForm);
+
+    //get the getComment form off the page
+    const getToDoUpdated = document.querySelector("#updatedTodoForm");
+
+    //listen for submit of the getCommentForm and attempt to populate the update form
+    getToDoUpdated.addEventListener("submit", updatedToDo);
 
 }
 //method to help get the data for update and fill out the form for the user
-const populateUpdateForm = async (event) => {
+const getToDoForm = async (event) => {
     event.preventDefault();
 
+
     //go get the single comment for the id the user selected
-    let comment = await getSingleComment(event.target.commentId.value);
+    let todo = await gettodo(event.target.toDoId.value);
 
     //fill out the form with the data from the comment we just got from the API
-    document.querySelector("#body").value = comment.body;
-    document.querySelector("#email").value = comment.email;
-    document.querySelector("#name").value = comment.name;
-    document.querySelector("#postId").value = comment.postId;
-    document.querySelector("#id").value = comment.id;
+    document.querySelector("#userId").value = todo.userId;
+    document.querySelector("#title").value = todo.title;
+    document.querySelector("#completed").value = todo.completed;
+    document.querySelector("#id").value = todo.id;
 
 }
-const getSingleComment = async (commentId) => {
+const gettodo = async (todoId) => {
 
-    const response = await fetch("https://jsonplaceholder.typicode.com/comments/" + commentId);
-    let comment = await response.json();
-
-    return comment;
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos/" + todoId);
+    let todo = await response.json();
+    console.log(todo);
+    return todo;
 
 }
 //method/function to create a comment
 //CRUD: (C)reate a comment
-const createAComment = async (event) => {
+const updatedToDo = async (event) => {
 
     //call preventDefault to keep the page from reloading
     event.preventDefault();
 
-    //generate a new form data object
-    let formData = new FormData(event.target);
 
-    //generate a JavaScript Object from the formData object created above
-    let formDataAsObject = Object.fromEntries(formData);
 
     //try catch for error handling
     try {
 
         //make a fetch (POST) request to create a comment in the API
-        let response = await fetch("https://jsonplaceholder.typicode.com/comments",
+        let response = await fetch(`https://jsonplaceholder.typicode.com/todos/` + event.target.id.value,
             {
-                method: "POST",
+
+                method: "PUT",
                 headers: { "Content-type": "application/json; charset=UTF-8" },
                 //take the data from the form and build the body of the request
-                body: JSON.stringify(formDataAsObject)
-            }
-        );
-        //turn the response in to something we can work with
-        let newComment = await response.json();
+                body: JSON.stringify({
+                    userId: event.target.userId.value,
+                    title: event.target.title.value,
 
-        //put the comments in the console
-        console.log(newComment)
+                    completed: event.target.completed.value,
+                })
+            });
+
+            let updatedToDo = await response.json();
+
+            //put the comments in the console
+            console.log(updatedToDo)
+
 
     } catch (err) {
 
