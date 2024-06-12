@@ -14,7 +14,12 @@ window.onload = () => {
 
     //listen for submit of the getCommentForm and attempt to populate the update form
     getToDoUpdated.addEventListener("submit", updatedToDo);
+    const cancelButton =document.querySelector("#cancelButton");
+    cancelButton.addEventListener("click", cancelEdit)
 
+}
+const cancelEdit = ()=>{
+    window.location.href="./index.html"
 }
 //method to help get the data for update and fill out the form for the user
 const getToDoForm = async (event) => {
