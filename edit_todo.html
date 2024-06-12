@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create a todo</title>
+    <title>Document</title>
 </head>
 <body>
-    {
-        "userId": 1,
-        "title": "delectus aut autem",
-        "completed": false
-    }
     <nav>
         <a href="index.html">Index Page</a>
         <a href="todo.html">Todo page</a>
         <a href="user.html">User Page</a>
-        <a href="edit_todo.html">Edit page</a>
+        <a href="new_todo.html">Edit page</a>
     
         
     </nav>
+    <form id="fetchToDoEdit">
+        <label for="toDoId">ToDo ID</label>
+        <input type="text" id="toDoId" name ="toDoId" required>
+        <button id="theButton">Lookup </button>
+    </form>
     <div>
         <h1>Add Comment Form</h1>
         <form id="createTodoForm">
@@ -39,6 +39,6 @@
         </form>
     </div>
 
-    <script src="scripts/new_todo.js"></script>
+    <script src="scripts/edit_todo.js"></script>
 </body>
 </html>
